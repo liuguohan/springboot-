@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo.mapper.BlogTypeMapper" >
+    <resultMap id="BaseResultMap" type="demo.domain.BlogType" >
+        <id column="id" property="id" />
+        <id column="bt_id" property="btId" />
+        <result column="type_txt" property="typeTxt" />
+        <result column="user_id" property="userId" />
+        <result column="crt_time" property="crtTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, bt_id, type_txt, user_id, crt_time
+    </sql>
+
+    <select id="getOne" resultMap="BaseResultMap" parameterType="java.lang.String" >
+            select 
+        <include refid="Base_Column_List" />
+        from blog_type
+            where bt_id = #{btId}
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+            select 
+            <include refid="Base_Column_List" />
+            from blog_type
+    </select>
+
+    <delete id="delete" parameterType="java.lang.String" >
+            delete from blog_type
+            where bt_id = #{btId}
+    </delete>
+
+    <insert id="insert" parameterType="demo.domain.BlogType" >
+            insert into blog_type (id, bt_id, type_txt, user_id, crt_time)
+            values (#{id}, #{btId}, #{typeTxt}, #{userId}, #{crtTime})
+    </insert>
+
+    <update id="update" parameterType="demo.domain.BlogType" >
+            update blog_type
+            set type_txt = #{typeTxt},
+            user_id = #{userId},
+            crt_time = #{crtTime}
+            where bt_id = #{btId}
+    </update>
+</mapper>
