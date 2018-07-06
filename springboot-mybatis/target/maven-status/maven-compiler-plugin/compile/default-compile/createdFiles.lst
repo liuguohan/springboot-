@@ -1,0 +1,7 @@
+demo\MybatisApplication.class
+demo\test\MybatisApplicationTests.class
+demo\service\BlogService.class
+demo\domain\BlogType.class
+demo\mapper\BlogTypeMapper.class
+demo\service\impl\BlogServiceImpl.class
+demo\controller\BlogController.class
